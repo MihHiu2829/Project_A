@@ -6,6 +6,7 @@ import com.example.project_a.API.API;
 import com.example.project_a.API.Req.LoginReq;
 import com.example.project_a.API.Res.GetKey;
 import com.example.project_a.API.Res.LoginRes;
+import com.example.project_a.R;
 import com.example.project_a.Storage.App;
 
 import java.security.InvalidKeyException;
@@ -21,27 +22,30 @@ import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
-public class m001_VM extends BaseViewModel_API{
+import okhttp3.ResponseBody;
+
+public class m001_VM extends BaseViewModel_API {
     public static final String LOGIN_ACCOUNT = "LOGIN_ACCOUNT";
-    private String credential ;
+    private String credential;
+    public int notify;
     public static final String GET_KEY = "GET_KEY";
-    public void LoginAcc(String username,String password)
-    {
-        String credentialTmp = "{\"username\":\""+ username
-                +"\",\"password\":\""+password+"\"\n" +
-                "}" ;
-        try{
-            credential =  Base64.getEncoder().encodeToString(encrypt(credentialTmp, App.getInstance().getStorage().key));
-            Log.e(m003_VM.class.getName(),"Credential: "+ credential) ;
-        }catch (Exception e)
-        {
+
+    public void LoginAcc(String username, String password) {
+        String credentialTmp = "{\"username\":\"" + username
+                + "\",\"password\":\"" + password + "\"\n" +
+                "}";
+        try {
+            credential = Base64.getEncoder().encodeToString(encrypt(credentialTmp, App.getInstance().getStorage().key));
+            Log.e(m003_VM.class.getName(), "Credential: " + credential);
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        getAPI().LoginAcount(new LoginReq(credential,App.getInstance().getStorage().key)).enqueue(initHandleResponse(LOGIN_ACCOUNT));
+        getAPI().LoginAcount(new LoginReq(credential, App.getInstance().getStorage().key)).enqueue(initHandleResponse(LOGIN_ACCOUNT));
     }
-    public static PublicKey getPublicKey(String base64PublicKey){
+
+    public static PublicKey getPublicKey(String base64PublicKey) {
         PublicKey publicKey = null;
-        try{
+        try {
             X509EncodedKeySpec keySpec = new X509EncodedKeySpec(Base64.getDecoder().decode(base64PublicKey.getBytes()));
             KeyFactory keyFactory = KeyFactory.getInstance("RSA");
             publicKey = keyFactory.generatePublic(keySpec);
@@ -53,28 +57,28 @@ public class m001_VM extends BaseViewModel_API{
         }
         return publicKey;
     }
+
     public static byte[] encrypt(String data, String publicKey) throws BadPaddingException, IllegalBlockSizeException, InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException {
         Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
         cipher.init(Cipher.ENCRYPT_MODE, getPublicKey(publicKey));
         return cipher.doFinal(data.getBytes());
     }
 
-    public void  get_Key()
-        {
-            getAPI().GetKeyAuthen().enqueue(initHandleResponse(GET_KEY));
-        }
+    public void get_Key() {
+        getAPI().GetKeyAuthen().enqueue(initHandleResponse(GET_KEY));
+    }
+
 
     @Override
     protected void handleSuccess(String key, Object body) {
         super.handleSuccess(key, body);
-        if(key.equals(GET_KEY))
-        {
-            GetKey getKey =(GetKey) body ;
-            Log.e(m001_VM.class.getName(),getKey.toString()) ;
-        }if(key.equals(LOGIN_ACCOUNT))
-        {
-            LoginRes res = (LoginRes) body ;
-            Log.e(m001_VM.class.getName(),res.toString()) ;
+        if (key.equals(GET_KEY)) {
+            GetKey getKey = (GetKey) body;
+            Log.e(m001_VM.class.getName(), getKey.toString());
+
+            }
         }
-    }
+
+
 }
+

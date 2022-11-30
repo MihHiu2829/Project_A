@@ -51,7 +51,13 @@ public class m003_frg extends baseFRG<M003ResigerBinding, m003_VM> {
     public void apiSuccess(String key, Object data) {
             if(key.equals(m003_VM.REGISTER_KEY))
             {
-                Toast.makeText(context, "Successful Register!", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, "Successful Register!", Toast.LENGTH_SHORT).show();
+
+                RegisterRes res = (RegisterRes)data ;
+                if(res.response.responseCode.equals("11"))
+                    Toast.makeText(context, res.response.responseMessage, Toast.LENGTH_SHORT).show();
+//                else if(res.response.responseMessage.equals(""))
+
             }
     }
 

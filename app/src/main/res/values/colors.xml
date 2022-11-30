@@ -8,4 +8,18 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#949292</color>
+    <color name="black01">#802B2A2A</color>
+    <color name="Mint01">#9EDEC6</color>
+    <color name="Mint02">#7CD2B3</color>
+    <color name="Mint03">#5AC69F</color>
+    <color name="Mint04">#3EB489</color>
+    <color name="Mint05">#32926F</color>
+    <color name="Mint06">#267055</color>
+    <color name="Mint07">#1B4E3B</color>
+    <color name="Cyan">#94EDFF</color>
+    <color name="blue">#1E88E5</color>
+    <color name="MidnightBlue">#0A4C86</color>
+    <color name="DarkBlue">#1D3B58</color>
+    <color name="white2">#80CCCCCC</color>
+    <color name="white3">#D9D8D8D8</color>
 </resources>

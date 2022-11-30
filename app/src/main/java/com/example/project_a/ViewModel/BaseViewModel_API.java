@@ -5,6 +5,9 @@ import android.util.Log;
 import androidx.lifecycle.ViewModel;
 
 import com.example.project_a.API.API;
+import com.example.project_a.API.Res.LoginRes;
+import com.example.project_a.R;
+import com.example.project_a.Storage.App;
 
 import java.util.concurrent.TimeUnit;
 
@@ -59,7 +62,7 @@ public abstract class BaseViewModel_API extends ViewModel {
         Log.e(TAG,"handleException:  "+ key);
     }
 
-    private void handleFail(String key, int code, ResponseBody errorBody) {
+    protected void handleFail(String key, int code, ResponseBody errorBody) {
             Log.e(TAG, "HandleFail: " + code) ;
             callBack.apiError(key,999,errorBody);
 

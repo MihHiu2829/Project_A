@@ -1,16 +1,22 @@
 package com.example.project_a.View.FRG;
 
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.example.project_a.API.Res.GetKey;
 import com.example.project_a.API.Res.LoginRes;
+import com.example.project_a.R;
 import com.example.project_a.Storage.App;
-import com.example.project_a.ViewModel.BaseViewModel_API;
 import com.example.project_a.ViewModel.m001_VM;
 import com.example.project_a.databinding.M001LoginBinding;
 
@@ -50,13 +56,43 @@ public class m001_frg extends baseFRG<M001LoginBinding, m001_VM> {
             {
                 GetKey getKey = (GetKey) data ;
                 App.getInstance().getStorage().key = getKey.data.key ;
-            }if(key.equals(m001_VM.LOGIN_ACCOUNT))
-        {
-            LoginRes res = (LoginRes) data ;
-            Log.e(m001_frg.class.getName(),res.response.responseCode);
-            Log.e(m001_frg.class.getName(),res.response.responseId);
-            Log.e(m001_frg.class.getName(),res.response.responseMessage);
-            Log.e(m001_frg.class.getName(),res.response.responseCode);
+            }if(key.equals(m001_VM.LOGIN_ACCOUNT)) {
+            LoginRes res = (LoginRes) data;
+            if (res.response.responseCode.equals("00"))
+                callBack.showFragment(m002_frg.class.getName(), null, false);
+            else {
+//                Log.e(m001_frg.class.getName(), res.response.responseCode);
+//                Log.e(m001_frg.class.getName(), res.response.responseId);
+//                Log.e(m001_frg.class.getName(), res.response.responseMessage);
+//                Log.e(m001_frg.class.getName(), res.response.responseTime);
+                final Dialog dialog = new Dialog(context);
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setContentView(R.layout.dialog_m001);
+
+                Window window = dialog.getWindow() ;
+                if(window == null) return ;
+                window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT);
+
+
+                WindowManager.LayoutParams windowAttributes = window.getAttributes() ;
+                windowAttributes.gravity = Gravity.CENTER;
+                window.setAttributes(windowAttributes);
+                dialog.setCancelable(true);
+
+                TextView showIn4 = dialog.findViewById(R.id.tv_text);
+                if (res.response.responseCode.equals("03"))
+                showIn4.setText(R.string.Error_03);
+                else showIn4.setText(R.string.Error_01);
+                dialog.show();
+
+                //                    dialog.dismiss();
+
+            }
         }
     }
+
+
+
+
 }
