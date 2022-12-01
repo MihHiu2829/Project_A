@@ -4,7 +4,7 @@ public class Storage {
         public String passsword;
         public String username ;
         public String key ;
-        public String notifyCase ;
+        public String notifyCase = "Bi loi roi";
 
 
 }

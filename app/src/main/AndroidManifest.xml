@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Project_A"
         tools:targetApi="31">
         <activity
-            android:name=".View.ACT.MainActivity"
+            android:name=".View.ACT.MainActivityLogin"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

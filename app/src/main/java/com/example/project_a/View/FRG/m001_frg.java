@@ -57,42 +57,36 @@ public class m001_frg extends baseFRG<M001LoginBinding, m001_VM> {
                 GetKey getKey = (GetKey) data ;
                 App.getInstance().getStorage().key = getKey.data.key ;
             }if(key.equals(m001_VM.LOGIN_ACCOUNT)) {
-            LoginRes res = (LoginRes) data;
-            if (res.response.responseCode.equals("00"))
-                callBack.showFragment(m002_frg.class.getName(), null, false);
-            else {
-//                Log.e(m001_frg.class.getName(), res.response.responseCode);
-//                Log.e(m001_frg.class.getName(), res.response.responseId);
-//                Log.e(m001_frg.class.getName(), res.response.responseMessage);
-//                Log.e(m001_frg.class.getName(), res.response.responseTime);
-                final Dialog dialog = new Dialog(context);
-                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                dialog.setContentView(R.layout.dialog_m001);
-
-                Window window = dialog.getWindow() ;
-                if(window == null) return ;
-                window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT);
-
-
-                WindowManager.LayoutParams windowAttributes = window.getAttributes() ;
-                windowAttributes.gravity = Gravity.CENTER;
-                window.setAttributes(windowAttributes);
-                dialog.setCancelable(true);
-
-                TextView showIn4 = dialog.findViewById(R.id.tv_text);
-                if (res.response.responseCode.equals("03"))
-                showIn4.setText(R.string.Error_03);
-                else showIn4.setText(R.string.Error_01);
-                dialog.show();
-
-                //                    dialog.dismiss();
-
-            }
+                        handleLogin(data) ;
         }
     }
 
+    private void handleLogin( Object data) {
+        LoginRes res = (LoginRes) data;
+        if (res.response.responseCode.equals("00"))
+            callBack.showFragment(m002_frg.class.getName(), null, false);
+        else {
+            final Dialog dialog = new Dialog(context);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setContentView(R.layout.dialog_m001);
+            Window window = dialog.getWindow() ;
+            if(window == null) return ;
+            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT);
+            WindowManager.LayoutParams windowAttributes = window.getAttributes() ;
+            windowAttributes.gravity = Gravity.CENTER;
+            window.setAttributes(windowAttributes);
+            dialog.setCancelable(true);
+            TextView showIn4 = dialog.findViewById(R.id.tv_text);
+            if (res.response.responseCode.equals("03"))
+                showIn4.setText(R.string.Error_03);
+            else showIn4.setText(R.string.Error_01);
+            dialog.show();
 
+            //                    dialog.dismiss();
+
+        }
+    }
 
 
 }

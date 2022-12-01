@@ -65,15 +65,24 @@ public class m003_VM extends BaseViewModel_API{
         cipher.init(Cipher.ENCRYPT_MODE, getPublicKey(publicKey));
         return cipher.doFinal(data.getBytes());
     }
-
+//Format message invalid, email format invalid, phoneNumber should be 10-11 numbers and start with 0
     @Override
     protected void handleSuccess(String key, Object body) {
         super.handleSuccess(key, body);
+        String notify ="" ;
         if(key.equals(REGISTER_KEY))
         {
-            RegisterRes getKey =(RegisterRes) body ;
-            Log.e(m003_VM.class.getName(),getKey.toString()) ;
+            RegisterRes res =(RegisterRes) body ;
+            Log.e(m003_VM.class.getName(),res.toString()) ;
+            if(res.response.responseMessage.contains("email format invalid"))
+                notify += "kiểu email của bạn bị sai, ";
+            if(res.response.responseMessage.contains("phoneNumber should be 10-11 numbers and start with 0"))
+                notify += "số điện thoại phải bắt đầu bằng 0 và đừng có chữ, ";
+            if(res.response.responseMessage.contains("identityNumber should only include number"))
+                notify += "Lỗi số căn cước," ;
         }
+
+        App.getInstance().getStorage().notifyCase = notify ;
     }
 
 }

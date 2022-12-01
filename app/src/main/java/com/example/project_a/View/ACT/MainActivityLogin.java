@@ -1,16 +1,12 @@
 package com.example.project_a.View.ACT;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-
 import com.example.project_a.R;
 import com.example.project_a.View.FRG.m001_frg;
-import com.example.project_a.ViewModel.BaseViewModel_API;
 import com.example.project_a.ViewModel.mainVM;
-import com.example.project_a.databinding.ActivityMainBinding;
+import com.example.project_a.databinding.ActivityMainLoginBinding;
+import com.example.project_a.databinding.ActivityMainLoginBinding;
 
-public class MainActivity extends baseACT<ActivityMainBinding, mainVM> {
+public class MainActivityLogin extends baseACT<ActivityMainLoginBinding, mainVM> {
 
     @Override
     protected int getIDmain() {
@@ -29,7 +25,7 @@ public class MainActivity extends baseACT<ActivityMainBinding, mainVM> {
     }
 
     @Override
-    protected ActivityMainBinding initViewBinding() {
-        return ActivityMainBinding.inflate(getLayoutInflater());
+    protected ActivityMainLoginBinding initViewBinding() {
+        return ActivityMainLoginBinding.inflate(getLayoutInflater());
     }
 }
