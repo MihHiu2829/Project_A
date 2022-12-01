@@ -15,6 +15,7 @@
     </LinearLayout>
     <include
         android:id="@+id/ic_function"
+
         layout="@layout/bottom_function"/>
 
 
