@@ -1,6 +1,7 @@
 package com.example.project_a.View.FRG;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
@@ -17,6 +18,8 @@ import com.example.project_a.API.Res.GetKey;
 import com.example.project_a.API.Res.LoginRes;
 import com.example.project_a.R;
 import com.example.project_a.Storage.App;
+import com.example.project_a.View.ACT.MainActivityHome;
+import com.example.project_a.View.ACT.MainActivityLogin;
 import com.example.project_a.ViewModel.m001_VM;
 import com.example.project_a.databinding.M001LoginBinding;
 
@@ -64,7 +67,7 @@ public class m001_frg extends baseFRG<M001LoginBinding, m001_VM> {
     private void handleLogin( Object data) {
         LoginRes res = (LoginRes) data;
         if (res.response.responseCode.equals("00"))
-            callBack.showFragment(m002_frg.class.getName(), null, false);
+            startActivity(new Intent(context, MainActivityHome.class) );
         else {
             final Dialog dialog = new Dialog(context);
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);

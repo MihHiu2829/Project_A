@@ -1,22 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_height="match_parent"
+<FrameLayout android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <include layout="@layout/top_bar"/>
+
+    <include
+        android:id="@+id/layout_topBar"
+        layout="@layout/top_bar"/>
+
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_marginTop="60dp"
         android:orientation="vertical"
-        android:id="@+id/ln_main02"
-        android:layout_height="770dp">
+        android:layout_marginBottom="60dp"
+        android:id="@+id/layout_LnShowIn4"
+        android:layout_height="match_parent">
+
+
+
 
 
     </LinearLayout>
     <include
-        android:id="@+id/ic_function"
-
+        android:layout_gravity="bottom"
+        android:id="@+id/layout_bottomFn"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
         layout="@layout/bottom_function"/>
 
 
-</LinearLayout>
+
+
+</FrameLayout>
