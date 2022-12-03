@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_height="60dp"
+    android:layout_height="50dp"
     android:layout_width="match_parent"
     android:background="@drawable/broder_6mint05"
     android:orientation="horizontal"
@@ -9,7 +9,7 @@
     
     <ImageView
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:padding="5dp"
         android:src="@drawable/item_home"
         android:layout_weight="1"
@@ -17,7 +17,7 @@
         app:tint="@color/Mint05" />
     <ImageView
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:padding="5dp"
         android:src="@drawable/item_search"
         android:layout_weight="1"
@@ -25,7 +25,7 @@
         app:tint="@color/Mint05" />
     <ImageView
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:padding="6dp"
         android:src="@drawable/item_noti"
         android:layout_weight="1"
@@ -33,7 +33,7 @@
         app:tint="@color/Mint05" />
     <ImageView
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:padding="6dp"
         android:src="@drawable/item_game"
         android:layout_weight="1"
@@ -41,7 +41,7 @@
         app:tint="@color/Mint05" />
         <ImageView
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:src="@drawable/item_aboutyou"
         android:layout_weight="1"
             android:padding="6dp"

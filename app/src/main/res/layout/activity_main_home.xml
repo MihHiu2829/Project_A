@@ -11,9 +11,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="50dp"
         android:orientation="vertical"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="50dp"
         android:id="@+id/layout_LnShowIn4"
         android:layout_height="match_parent">
 
