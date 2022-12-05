@@ -55,7 +55,71 @@ Ngày phát hành : 4 tháng 12, 2017
 PUBG Moblie
 Miễn phí
 Hành động
-VNG Game Publishing : 19 tháng 3, 2018
+VNG Game Publishing
+Ngày phát hành : 19 tháng 3, 2018
+','0');
+Minecraft
+Có phí
+Sáng tạo,Sinh tồn
+Mojang
+Ngày phát hành : 18 tháng 11, 2011
+','0');
+evertale
+Có phí
+Chiến thuật,Sáng tạo
+SteamDB
+Ngày phát hành : 12 tháng 2, 2021
+','0');
+Hitman:Sniper
+Có phí
+Trò chơi bắn súng
+Square Enix Montreal
+Ngày phát hành : 3 tháng 10, 2014
+','0');
+Sone Of Souls 2:Ston Parts
+Có phí
+Nhập vai,Sinh tồn,Phiêu lưu
+EGProject
+Ngày phát hành : 21 tháng 8, 2015
+','0');
+Soul Knight
+Miễn phí
+Nhập vai,Phiêu lưu,Phá ải
+ChillyRoom
+Ngày phát hành : năm 2012
+','0');
+Rovio Classics: AB
+Có phí
+Trí tuệ,Phá ải
+Rovio E-Corporation
+Ngày phát hành : không rõ
+','0');
+Fruit Ninja Classic
+Có phí
+Giải trí,Phá ải
+Halfbrick Studios
+Ngày phát hành : 7 tháng 6, 2012
+','0');
+Don't Starve: Pocket Edition
+Có phí
+Hành động,Sinh tồn,Vô tuyến
+Klei Entertainment Inc
+Ngày phát hành : 15 tháng 7, 2015
+','0');
+Geometry Dash
+Có phí
+Phá ải,Âm nhạc,Hành động
+RobTop Games
+Ngày phát hành : tháng 8 năm 2013
+','0');
+Flappy bird
+Miễn phí
+Giải trí,Dễ vui,Dễ quạo
+Nguyễn Hà Đông
+Ngày phát hành : 24 tháng 5,2013
+','0');
+
+
 
 
 

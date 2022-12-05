@@ -1,14 +1,18 @@
 package com.example.project_a.View.ACT;
 
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 
 import com.example.project_a.R;
 import com.example.project_a.View.FRG.m011_frg;
 import com.example.project_a.View.FRG.m012_frg;
+import com.example.project_a.View.FRG.m013_frg;
 import com.example.project_a.ViewModel.CommonVm;
 import com.example.project_a.ViewModel.mainHomeVM;
 import com.example.project_a.databinding.ActivityMainHomeBinding;
@@ -77,7 +81,7 @@ public class MainActivityHome extends baseACT<ActivityMainHomeBinding, mainHomeV
         View view = getLayoutInflater().inflate(R.layout.top_searching,null) ;
         binding.lnTopBar.removeAllViews();
         binding.lnTopBar.addView(view,WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.MATCH_PARENT);
-        showFragment(m012_frg.class.getName(),null,true);
+        showFragment(m012_frg.class.getName(),null,false);
 
     }
 
@@ -87,10 +91,12 @@ public class MainActivityHome extends baseACT<ActivityMainHomeBinding, mainHomeV
         binding.layoutBottomFn.btAboutyou.setBackgroundResource(R.color.white);
         binding.layoutBottomFn.btGame.setBackgroundResource(R.color.white);
         binding.layoutBottomFn.btSearch.setBackgroundResource(R.color.white);
-        binding.layoutBottomFn.btNoti.setBackgroundResource(R.color.Mint01);
         View view = getLayoutInflater().inflate(R.layout.top_notification1,null) ;
+        ImageView iv = getLayoutInflater().inflate(R.layout.bottom_function,null).findViewById(R.id.bt_noti) ;
+        iv.setColorFilter(Color.BLACK);
         binding.lnTopBar.removeAllViews();
         binding.lnTopBar.addView(view, WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.MATCH_PARENT);
+        showFragment(m013_frg.class.getName(),null,false);
     }
 
     @Override

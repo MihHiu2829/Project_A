@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:id="@+id/ln_listFind"
-        android:padding="5dp"
         android:layout_height="match_parent">
 
         <include layout="@layout/item_detailgame" />
