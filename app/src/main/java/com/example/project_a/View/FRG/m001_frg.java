@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.project_a.API.Res.GetKey;
@@ -67,7 +69,11 @@ public class m001_frg extends baseFRG<M001LoginBinding, m001_VM> {
     private void handleLogin( Object data) {
         LoginRes res = (LoginRes) data;
         if (res.response.responseCode.equals("00"))
-            startActivity(new Intent(context, MainActivityHome.class) );
+        {
+            startActivity(new Intent(context, MainActivityHome.class));
+
+        }
+
         else {
             final Dialog dialog = new Dialog(context);
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
