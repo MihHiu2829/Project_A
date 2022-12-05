@@ -1,14 +1,19 @@
 package com.example.project_a.View.ACT;
 
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 
 import com.example.project_a.R;
 import com.example.project_a.View.FRG.m011_frg;
+import com.example.project_a.View.FRG.m012_frg;
 import com.example.project_a.ViewModel.CommonVm;
+import com.example.project_a.ViewModel.mainHomeVM;
 import com.example.project_a.databinding.ActivityMainHomeBinding;
 
-public class MainActivityHome extends baseACT<ActivityMainHomeBinding, CommonVm>
+public class MainActivityHome extends baseACT<ActivityMainHomeBinding, mainHomeVM>
 {
 
     @Override
@@ -19,9 +24,9 @@ public class MainActivityHome extends baseACT<ActivityMainHomeBinding, CommonVm>
     @Override
     protected void initViews()
     {
+
         binding.layoutBottomFn.btHome.setBackgroundResource(R.color.Mint01);
         showFragment(m011_frg.class.getName(),null,false);
-
 
         binding.layoutBottomFn.btNoti.setOnClickListener(this::gotoFrgNoti);
         binding.layoutBottomFn.btSearch.setOnClickListener(this::gotoFrgSearch);
@@ -56,6 +61,10 @@ public class MainActivityHome extends baseACT<ActivityMainHomeBinding, CommonVm>
         binding.layoutBottomFn.btGame.setBackgroundResource(R.color.white);
         binding.layoutBottomFn.btSearch.setBackgroundResource(R.color.white);
         binding.layoutBottomFn.btNoti.setBackgroundResource(R.color.white);
+        View view = getLayoutInflater().inflate(R.layout.top_bar,null) ;
+        binding.lnTopBar.removeAllViews();
+        binding.lnTopBar.addView(view,WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.MATCH_PARENT);
+        showFragment(m011_frg.class.getName(),null,false);
     }
 
     private void gotoFrgSearch(View v) {
@@ -65,6 +74,11 @@ public class MainActivityHome extends baseACT<ActivityMainHomeBinding, CommonVm>
         binding.layoutBottomFn.btGame.setBackgroundResource(R.color.white);
         binding.layoutBottomFn.btSearch.setBackgroundResource(R.color.Mint01);
         binding.layoutBottomFn.btNoti.setBackgroundResource(R.color.white);
+        View view = getLayoutInflater().inflate(R.layout.top_searching,null) ;
+        binding.lnTopBar.removeAllViews();
+        binding.lnTopBar.addView(view,WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.MATCH_PARENT);
+        showFragment(m012_frg.class.getName(),null,true);
+
     }
 
     private void gotoFrgNoti(View v) {
@@ -74,11 +88,14 @@ public class MainActivityHome extends baseACT<ActivityMainHomeBinding, CommonVm>
         binding.layoutBottomFn.btGame.setBackgroundResource(R.color.white);
         binding.layoutBottomFn.btSearch.setBackgroundResource(R.color.white);
         binding.layoutBottomFn.btNoti.setBackgroundResource(R.color.Mint01);
+        View view = getLayoutInflater().inflate(R.layout.top_notification1,null) ;
+        binding.lnTopBar.removeAllViews();
+        binding.lnTopBar.addView(view, WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.MATCH_PARENT);
     }
 
     @Override
-    protected Class<CommonVm> ClassViewModel() {
-        return CommonVm.class;
+    protected Class<mainHomeVM> ClassViewModel() {
+        return mainHomeVM.class;
     }
 
     @Override
