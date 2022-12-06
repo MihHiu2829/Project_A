@@ -20,15 +20,19 @@
         <ImageView
             android:layout_width="40dp"
             android:padding="5dp"
+            android:id="@+id/bt_findding"
             android:src="@drawable/item_search"
             android:layout_height="match_parent"
             app:tint="@color/black" />
-        <TextView
+        <EditText
             android:layout_width="match_parent"
-            android:text="Tìm kiếm"
+            android:hint="Tim kiem"
+            android:id="@+id/edt_find"
+            android:background="@android:color/transparent"
             android:textColor="@color/black"
             android:padding="10dp"
             android:layout_height="match_parent"/>
+
 
 
     </LinearLayout>

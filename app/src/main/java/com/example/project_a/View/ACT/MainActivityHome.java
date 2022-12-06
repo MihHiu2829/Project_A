@@ -29,9 +29,9 @@ public class MainActivityHome extends baseACT<ActivityMainHomeBinding, mainHomeV
     protected void initViews()
     {
 
-        binding.layoutBottomFn.btHome.setBackgroundResource(R.color.Mint01);
+       ImageView ivHome = binding.layoutBottomFn.btHome.findViewById(R.id.bt_home) ;
+       ivHome.setColorFilter(getResources().getColor(R.color.Mint07));
         showFragment(m011_frg.class.getName(),null,false);
-
         binding.layoutBottomFn.btNoti.setOnClickListener(this::gotoFrgNoti);
         binding.layoutBottomFn.btSearch.setOnClickListener(this::gotoFrgSearch);
         binding.layoutBottomFn.btHome.setOnClickListener(this::gotoFrgHome);
@@ -41,43 +41,40 @@ public class MainActivityHome extends baseACT<ActivityMainHomeBinding, mainHomeV
     }
 
     private void gotoFrgGames(View v) {
-        v.startAnimation(AnimationUtils.loadAnimation(this, androidx.appcompat.R.anim.abc_fade_in));
-        binding.layoutBottomFn.btHome.setBackgroundResource(R.color.white);
-        binding.layoutBottomFn.btAboutyou.setBackgroundResource(R.color.white);
-        binding.layoutBottomFn.btGame.setBackgroundResource(R.color.Mint01);
-        binding.layoutBottomFn.btSearch.setBackgroundResource(R.color.white);
-        binding.layoutBottomFn.btNoti.setBackgroundResource(R.color.white);
+        returnOriginalColorBotton();
+        binding.layoutBottomFn.btGame.setColorFilter(getResources().getColor(R.color.Mint07));
+
     }
 
     private void gotoFrgAboutYou(View v) {
-        v.startAnimation(AnimationUtils.loadAnimation(this, androidx.appcompat.R.anim.abc_fade_in));
-        binding.layoutBottomFn.btHome.setBackgroundResource(R.color.white);
-        binding.layoutBottomFn.btAboutyou.setBackgroundResource(R.color.Mint01);
-        binding.layoutBottomFn.btGame.setBackgroundResource(R.color.white);
-        binding.layoutBottomFn.btSearch.setBackgroundResource(R.color.white);
-        binding.layoutBottomFn.btNoti.setBackgroundResource(R.color.white);
+        returnOriginalColorBotton();
+        binding.layoutBottomFn.btAboutyou.setColorFilter(getResources().getColor(R.color.Mint07));
+
     }
 
     private void gotoFrgHome(View v) {
-        v.startAnimation(AnimationUtils.loadAnimation(this, androidx.appcompat.R.anim.abc_fade_in));
-        binding.layoutBottomFn.btHome.setBackgroundResource(R.color.Mint01);
-        binding.layoutBottomFn.btAboutyou.setBackgroundResource(R.color.white);
-        binding.layoutBottomFn.btGame.setBackgroundResource(R.color.white);
-        binding.layoutBottomFn.btSearch.setBackgroundResource(R.color.white);
-        binding.layoutBottomFn.btNoti.setBackgroundResource(R.color.white);
+        returnOriginalColorBotton();
+        binding.layoutBottomFn.btHome.setColorFilter(getResources().getColor(R.color.Mint07));
         View view = getLayoutInflater().inflate(R.layout.top_bar,null) ;
         binding.lnTopBar.removeAllViews();
         binding.lnTopBar.addView(view,WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.MATCH_PARENT);
         showFragment(m011_frg.class.getName(),null,false);
     }
 
+    private void returnOriginalColorBotton()
+    {
+        binding.layoutBottomFn.btNoti.setColorFilter(getResources().getColor(R.color.Mint05));
+        binding.layoutBottomFn.btHome.setColorFilter(getResources().getColor(R.color.Mint05));
+        binding.layoutBottomFn.btGame.setColorFilter(getResources().getColor(R.color.Mint05));
+        binding.layoutBottomFn.btAboutyou.setColorFilter(getResources().getColor(R.color.Mint05));
+        binding.layoutBottomFn.btSearch.setColorFilter(getResources().getColor(R.color.Mint05));
+    }
     private void gotoFrgSearch(View v) {
-        v.startAnimation(AnimationUtils.loadAnimation(this, androidx.appcompat.R.anim.abc_fade_in));
-        binding.layoutBottomFn.btHome.setBackgroundResource(R.color.white);
-        binding.layoutBottomFn.btAboutyou.setBackgroundResource(R.color.white);
-        binding.layoutBottomFn.btGame.setBackgroundResource(R.color.white);
-        binding.layoutBottomFn.btSearch.setBackgroundResource(R.color.Mint01);
-        binding.layoutBottomFn.btNoti.setBackgroundResource(R.color.white);
+
+        returnOriginalColorBotton();
+        binding.layoutBottomFn.btSearch.setColorFilter(getResources().getColor(R.color.Mint07));
+
+
         View view = getLayoutInflater().inflate(R.layout.top_searching,null) ;
         binding.lnTopBar.removeAllViews();
         binding.lnTopBar.addView(view,WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.MATCH_PARENT);
@@ -86,14 +83,11 @@ public class MainActivityHome extends baseACT<ActivityMainHomeBinding, mainHomeV
     }
 
     private void gotoFrgNoti(View v) {
-        v.startAnimation(AnimationUtils.loadAnimation(this, androidx.appcompat.R.anim.abc_fade_in));
-        binding.layoutBottomFn.btHome.setBackgroundResource(R.color.white);
-        binding.layoutBottomFn.btAboutyou.setBackgroundResource(R.color.white);
-        binding.layoutBottomFn.btGame.setBackgroundResource(R.color.white);
-        binding.layoutBottomFn.btSearch.setBackgroundResource(R.color.white);
+        returnOriginalColorBotton();
+        binding.layoutBottomFn.btNoti.setColorFilter(getResources().getColor(R.color.Mint07));
         View view = getLayoutInflater().inflate(R.layout.top_notification1,null) ;
         ImageView iv = getLayoutInflater().inflate(R.layout.bottom_function,null).findViewById(R.id.bt_noti) ;
-        iv.setColorFilter(Color.BLACK);
+        iv.setColorFilter(getColor(R.color.black));
         binding.lnTopBar.removeAllViews();
         binding.lnTopBar.addView(view, WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.MATCH_PARENT);
         showFragment(m013_frg.class.getName(),null,false);
