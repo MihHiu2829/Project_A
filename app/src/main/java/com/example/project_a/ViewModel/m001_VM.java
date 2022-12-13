@@ -75,7 +75,6 @@ public class m001_VM extends BaseViewModel_API {
         if (key.equals(GET_KEY)) {
             GetKey getKey = (GetKey) body;
             Log.e(m001_VM.class.getName(), getKey.toString());
-
             }
         }
 

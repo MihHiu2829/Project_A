@@ -20,6 +20,7 @@ import com.example.project_a.API.Res.GetKey;
 import com.example.project_a.API.Res.LoginRes;
 import com.example.project_a.R;
 import com.example.project_a.Storage.App;
+import com.example.project_a.Storage.Storage;
 import com.example.project_a.View.ACT.MainActivityHome;
 import com.example.project_a.View.ACT.MainActivityLogin;
 import com.example.project_a.ViewModel.m001_VM;
@@ -70,6 +71,7 @@ public class m001_frg extends baseFRG<M001LoginBinding, m001_VM> {
         LoginRes res = (LoginRes) data;
         if (res.response.responseCode.equals("00"))
         {
+            App.getInstance().getStorage().accountNo = res.data.accountNo ;
             startActivity(new Intent(context, MainActivityHome.class));
 
         }

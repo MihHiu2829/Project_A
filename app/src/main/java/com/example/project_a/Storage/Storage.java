@@ -5,6 +5,7 @@ public class Storage {
         public String username ;
         public String key ;
         public String notifyCase = "Bi loi roi";
+        public String accountNo ;
 
 
 }

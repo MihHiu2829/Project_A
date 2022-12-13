@@ -26,6 +26,7 @@
                 android:value="" />
         </activity>
         <activity android:name=".View.ACT.MainActivityHome"/>
+        <activity android:name=".otherClass.resetPassword"/>
     </application>
 
 </manifest>

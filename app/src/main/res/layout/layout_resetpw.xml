@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:background="@drawable/broder_6black"
+                android:layout_margin="10dp"
+                android:id="@+id/edt_userName"
+                android:hint="enter username"
+                android:paddingHorizontal="20dp"
+                android:layout_height="50dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:background="@drawable/broder_6black"
+                android:layout_margin="10dp"
+                android:id="@+id/edt_oldPW"
+                android:hint="enter old password"
+                android:paddingHorizontal="20dp"
+                android:layout_height="50dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:background="@drawable/broder_6black"
+                android:layout_margin="10dp"
+                android:id="@+id/edt_newPW"
+                android:hint="enter new password"
+                android:paddingHorizontal="20dp"
+                android:layout_height="50dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginBottom="150dp"
+                android:layout_height="55dp">
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:text="cancel"
+                    android:id="@+id/bt_cancelRS"
+                    android:layout_marginHorizontal="10dp"
+                    android:backgroundTint="@color/gray"/>
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:text="reset"
+                    android:layout_marginHorizontal="10dp"
+                    android:id="@+id/bt_ChangePW"
+                    android:backgroundTint="@color/Mint05"/>
+
+            </LinearLayout>
+
+</LinearLayout>

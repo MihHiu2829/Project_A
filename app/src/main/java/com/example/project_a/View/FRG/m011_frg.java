@@ -1,11 +1,14 @@
 package com.example.project_a.View.FRG;
 
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -86,6 +89,15 @@ public class m011_frg extends baseFRG<M011ShowpagerBinding, m011_VM> {
                 content.setText(item.content);
                 date.setText(item.date);
                 binding.lnItem.addView(itemview);
+                itemview.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        v.startAnimation(AnimationUtils.loadAnimation(context, androidx.appcompat.R.anim.abc_fade_in));
+                        Intent intent = new Intent(Intent.ACTION_VIEW);
+                        intent.setData(Uri.parse("https://game4v.com/")) ;
+                        startActivity(intent);
+                    }
+                });
             }
 
 

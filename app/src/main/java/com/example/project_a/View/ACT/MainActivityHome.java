@@ -9,10 +9,13 @@ import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import androidx.drawerlayout.widget.DrawerLayout;
+
 import com.example.project_a.R;
 import com.example.project_a.View.FRG.m011_frg;
 import com.example.project_a.View.FRG.m012_frg;
 import com.example.project_a.View.FRG.m013_frg;
+import com.example.project_a.View.FRG.m015_frg;
 import com.example.project_a.ViewModel.CommonVm;
 import com.example.project_a.ViewModel.mainHomeVM;
 import com.example.project_a.databinding.ActivityMainHomeBinding;
@@ -32,7 +35,7 @@ public class MainActivityHome extends baseACT<ActivityMainHomeBinding, mainHomeV
        ImageView ivHome = binding.layoutBottomFn.btHome.findViewById(R.id.bt_home) ;
        ivHome.setColorFilter(getResources().getColor(R.color.Mint07));
         showFragment(m011_frg.class.getName(),null,false);
-        binding.layoutBottomFn.btNoti.setOnClickListener(this::gotoFrgNoti);
+        binding.layoutBottomFn.btNoti.setOnClickListener(v -> gotoFrgNoti(v));
         binding.layoutBottomFn.btSearch.setOnClickListener(this::gotoFrgSearch);
         binding.layoutBottomFn.btHome.setOnClickListener(this::gotoFrgHome);
         binding.layoutBottomFn.btAboutyou.setOnClickListener(this::gotoFrgAboutYou);
@@ -49,8 +52,24 @@ public class MainActivityHome extends baseACT<ActivityMainHomeBinding, mainHomeV
     private void gotoFrgAboutYou(View v) {
         returnOriginalColorBotton();
         binding.layoutBottomFn.btAboutyou.setColorFilter(getResources().getColor(R.color.Mint07));
+        binding.lnTopBar.removeAllViews();
+        View view = getLayoutInflater().inflate(R.layout.top_bar_in4,null) ;
+        ImageView iv_itemMenu = view.findViewById(R.id.bt_drawer) ;
+        iv_itemMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                v.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(),androidx.appcompat.R.anim.abc_fade_in));
+//                  View view = getLayoutInflater().inflate(R.layout.m015_in4,null) ;
+//                  DrawerLayout DL = view.findViewById(R.id.DL_drawer) ;
+//                  DL.openDrawer(Gravity.LEFT);
+            }
+        });
+        binding.lnTopBar.addView(view,WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.MATCH_PARENT);
+        showFragment(m015_frg.class.getName(),null,false);
+
 
     }
+
 
     private void gotoFrgHome(View v) {
         returnOriginalColorBotton();
