@@ -59,13 +59,11 @@ public class MainActivityHome extends baseACT<ActivityMainHomeBinding, mainHomeV
             @Override
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(),androidx.appcompat.R.anim.abc_fade_in));
-//                  View view = getLayoutInflater().inflate(R.layout.m015_in4,null) ;
-//                  DrawerLayout DL = view.findViewById(R.id.DL_drawer) ;
-//                  DL.openDrawer(Gravity.LEFT);
+
             }
         });
         binding.lnTopBar.addView(view,WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.MATCH_PARENT);
-        showFragment(m015_frg.class.getName(),null,false);
+        showFragment(m015_frg.class.getName(),1,false);
 
 
     }
