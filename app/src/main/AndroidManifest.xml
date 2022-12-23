@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <application
         android:name=".Storage.App"
         android:allowBackup="true"
@@ -10,6 +11,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Project_A"
         tools:targetApi="31">
         <activity
@@ -27,6 +29,7 @@
         </activity>
         <activity android:name=".View.ACT.MainActivityHome"/>
         <activity android:name=".otherClass.resetPassword"/>
+        <activity android:name=".View.FRG.m000_loading"/>
     </application>
 
 </manifest>

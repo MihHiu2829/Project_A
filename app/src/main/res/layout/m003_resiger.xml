@@ -127,6 +127,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:text="Resiger"
+            android:backgroundTint="@color/Mint05"
             android:id="@+id/bt_resiger"
             android:layout_height="match_parent"/>
     </LinearLayout>

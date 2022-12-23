@@ -11,11 +11,47 @@ import com.example.project_a.API.Res.TranhisRes;
 import com.example.project_a.API.Res.transferRes;
 import com.example.project_a.Storage.App;
 
+import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory;
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 import okhttp3.ResponseBody;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class m015_VM extends BaseViewModel_API{
 
     public static final String GET_TRANSFER = "GET_TRANSFER";
+    public static final String GET_USER = "GET_USER";
+
+
+    public void getUser(String accNo)
+    {
+
+    CompositeDisposable compositeDisposable = new CompositeDisposable() ;
+    Retrofit rs = new Retrofit.Builder()
+            .baseUrl("https://autofb18.net/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+            .build() ;
+    API api = rs.create(API.class) ;
+        compositeDisposable.add(api.getUser(accNo)
+        .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(database_getIn4 ->
+    {
+        callBack.apiSuccess(GET_USER,database_getIn4 );
+        Log.e(m015_VM.class.getName(),"ten ne: " + database_getIn4.name );
+        Log.e(m015_VM.class.getName(),"doi tuong ne : " + database_getIn4.username );
+        Log.e(m015_VM.class.getName(),"gi do : " + database_getIn4.gmail );
+        Log.e(m015_VM.class.getName(),"va gi do nua: " + database_getIn4.phone );
+    },
+    throwable ->
+    {
+        Log.e(m003_VM.class.getName(),"co cai cc" + throwable.getMessage() );
+    }
+                )
+                        );
+}
+
 
 
     public void getTransfer(String amount, String desC, String toAcct)
@@ -73,8 +109,10 @@ public class m015_VM extends BaseViewModel_API{
 //            {
 //                Log.e(m015_VM.class.getName(),"Chuyen tien thanh cong? : "+res.response.responseMessage) ;
 //            }
+            callBack.apiSuccess(GET_TRANSFER,res);
         }
-        Log.e(m015_VM.class.getName(),"Thanh cong hoac khong thanh cong!!");
+
+        Log.e(m015_VM.class.getName(),"Chuyen tien thanh cong! ");
     }
 
     @Override

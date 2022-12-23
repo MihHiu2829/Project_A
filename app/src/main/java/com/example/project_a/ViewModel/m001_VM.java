@@ -34,6 +34,7 @@ public class m001_VM extends BaseViewModel_API {
         String credentialTmp = "{\"username\":\"" + username
                 + "\",\"password\":\"" + password + "\"\n" +
                 "}";
+        Log.e(m001_VM.class.getName(),"Ma giai chua derytp" + credentialTmp) ;
         try {
             credential = Base64.getEncoder().encodeToString(encrypt(credentialTmp, App.getInstance().getStorage().key));
             Log.e(m003_VM.class.getName(), "Credential: " + credential);
@@ -75,8 +76,14 @@ public class m001_VM extends BaseViewModel_API {
         if (key.equals(GET_KEY)) {
             GetKey getKey = (GetKey) body;
             Log.e(m001_VM.class.getName(), getKey.toString());
-            }
         }
+        else if(key.equals(LOGIN_ACCOUNT))
+        {
+            LoginRes loginRes = (LoginRes) body ;
+          App.getInstance().getStorage().accountNo = loginRes.data.accountNo ;
+        }
+
+    }
 
 
 }

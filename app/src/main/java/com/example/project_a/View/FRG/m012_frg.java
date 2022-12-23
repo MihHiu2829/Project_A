@@ -1,11 +1,13 @@
 package com.example.project_a.View.FRG;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -16,17 +18,24 @@ import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.example.project_a.API.API;
+import com.example.project_a.API.Req.transferReq;
+import com.example.project_a.API.Res.transferRes;
 import com.example.project_a.R;
+import com.example.project_a.Storage.App;
 import com.example.project_a.ViewModel.m012_VM;
 import com.example.project_a.databinding.M012SearchingBinding;
 import com.example.project_a.otherClass.Adapter.gamePhoto;
 import com.example.project_a.otherClass.Adapter.viewPagerApdapter;
+import com.example.project_a.otherClass.Games;
 import com.example.project_a.otherClass.detailGames;
 import com.example.project_a.otherClass.papers;
+import com.google.gson.Gson;
 
 import org.w3c.dom.Text;
 
@@ -37,13 +46,23 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class m012_frg extends baseFRG<M012SearchingBinding,m012_VM> {
     private List<detailGames> list ;
     private int index = 0 ;
     private List<gamePhoto> gamePhotoList  ;
+    private ImageView dialogPic;
+    private String price;
+    private String nameGame;
 
     @Override
     protected void initViews() {
+                App.getInstance().getStorage().initStorage();
                 importList();
         importListPaper() ;
 
@@ -75,6 +94,8 @@ public class m012_frg extends baseFRG<M012SearchingBinding,m012_VM> {
                 tv_publisher.setText(item.publisher);
                 released.setText(item.released);
                 option.setText(item.option);
+                Games game = new Games(item.nameGame,item.option,item.released,item.publisher,item.price,bitmap);
+                App.getInstance().getStorage().listLocalGames.add(App.getInstance().getStorage().index++,game);
                 binding.lnListFind.addView(itemview);
                 itemview.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -116,28 +137,49 @@ public class m012_frg extends baseFRG<M012SearchingBinding,m012_VM> {
         tv_price = dialog.findViewById(R.id.tv_dialogPrice) ;
         tv_Option.setText(list.get(((int)v.getTag())).option);
         tv_title.setText(list.get(((int)v.getTag())).nameGame);
+        nameGame =  list.get(((int)v.getTag())).nameGame ;
         tv_Publisher.setText(list.get(((int)v.getTag())).publisher);
-        if(list.get(((int)v.getTag())).price.equals("Có phí"))
-        {
-            tv_price.setText("20000đ");
-        }else{
             tv_price.setText(list.get(((int)v.getTag())).price);
-        }
-            tv_price.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    v.startAnimation(AnimationUtils.loadAnimation(context, androidx.appcompat.R.anim.abc_fade_in));
-
-                }
-            });
-
-        ImageView dialogPic = dialog.findViewById(R.id.dialog_picture) ;
+         price = list.get(((int) v.getTag())).price;
+         dialogPic = dialog.findViewById(R.id.dialog_picture) ;
         dialogPic.setImageBitmap(list.get((int)v.getTag()).picture);
         ViewPager showPic = dialog.findViewById(R.id.vp_listPhotoGame) ;
         showPic.setAdapter(adtapter);
         dialog.show();
 
-    }
+
+            tv_price.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    v.startAnimation(AnimationUtils.loadAnimation(context, androidx.appcompat.R.anim.abc_fade_in));
+                              if(  tv_price.getText().toString().equals("Miễn phí"))
+                              {
+//                                  Intent intent = new Intent(Intent.ACTION_VIEW);
+//                                  intent.setData(Uri.parse("https://game4v.com/")) ;
+//                                  startActivity(intent);
+                                 startActivity(new Intent().setData(Uri.parse("https://play.google.com/store/apps")));
+                                 viewModel.getGameUBuy(nameGame,App.getInstance().getStorage().accountNo,true) ;
+                                  Toast.makeText(context, App.getInstance().getStorage().notifyCase, Toast.LENGTH_SHORT).show();
+
+                              }else
+                              {
+
+                                  viewModel.getGameUBuy(nameGame,App.getInstance().getStorage().accountNo,false) ;
+//                                      viewModel.BuyGames("20000đ","Tien mua game: "+ nameGame,"002704070000059");
+                                  Toast.makeText(context, App.getInstance().getStorage().notifyCase, Toast.LENGTH_SHORT).show();
+
+                              }
+                }
+            });
+
+
+
+
+
+        }
+
+
+
 
     private void getListPhotoGames(View v) {
         int index =(int) v.getTag() + 1 ;

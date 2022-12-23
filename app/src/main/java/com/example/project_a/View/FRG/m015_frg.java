@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,10 +19,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.project_a.API.Res.BalanceRes;
 import com.example.project_a.API.Res.TranhisRes;
+import com.example.project_a.API.Res.database_getIn4;
+import com.example.project_a.API.Res.transferRes;
 import com.example.project_a.R;
 import com.example.project_a.Storage.App;
 import com.example.project_a.ViewModel.m015_VM;
@@ -31,21 +36,59 @@ import com.example.project_a.otherClass.resetPassword;
 import org.w3c.dom.Text;
 
 public class m015_frg extends baseFRG<M015In4Binding, m015_VM> {
+    private database_getIn4 responseUser;
+
     @Override
     protected void initViews() {
         viewModel.getAmount();
-        binding.btFriendtransfer.setColorFilter(getResources().getColor(R.color.Mint07));
+       viewModel.getUser(App.getInstance().getStorage().accountNo);
+        binding.btTransfer.setColorFilter(getResources().getColor(R.color.Mint07));
        binding.btTransfer.setOnClickListener(v -> gotoTransfer(v));
        binding.btFriendtransfer.setOnClickListener(v -> gotoFriendtransfer(v));
        binding.btGetPrice.setOnClickListener(v -> gotoPrice(v));
        binding.btHistory.setOnClickListener(v -> gotoHistory(v));
+
+
+
+        if(data != null)
+        {
+            OpenDrawer();
+        }
         binding.tvResetPassword.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    v.startAnimation(AnimationUtils.loadAnimation(context, androidx.appcompat.R.anim.abc_fade_in));
+                      startActivity(new Intent(context,resetPassword.class));
+                }
+            });
+        binding.tvAboutMe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(context, androidx.appcompat.R.anim.abc_fade_in));
-               startActivity(new Intent(context,resetPassword.class));
+//                startActivity(new Intent(context,resetPassword.class));
             }
         });
+        binding.tvLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                v.startAnimation(AnimationUtils.loadAnimation(context, androidx.appcompat.R.anim.abc_fade_in));
+//                startActivity(new Intent(context,resetPassword.class));
+            }
+        });
+        binding.tvRepairIn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                v.startAnimation(AnimationUtils.loadAnimation(context, androidx.appcompat.R.anim.abc_fade_in));
+//                startActivity(new Intent(context,resetPassword.class));
+            }
+        });
+
+
+
+    }
+
+    private void OpenDrawer() {
+        binding.DLDrawer.open();
     }
 
     public static String fromDateHis = "";
@@ -206,9 +249,6 @@ public class m015_frg extends baseFRG<M015In4Binding, m015_VM> {
         });
 
     }
-
-
-
     private void producerHistory(View view) {
                 viewModel.getTransHis(fromDateHis,toDateHis);
     }
@@ -216,6 +256,22 @@ public class m015_frg extends baseFRG<M015In4Binding, m015_VM> {
     @Override
     public void apiSuccess(String key, Object data) {
         super.apiSuccess(key, data);
+
+
+        if(key.equals(m015_VM.GET_USER))
+        {
+             responseUser = (database_getIn4)data ;
+            binding.tvM041Name.setText(responseUser.name);
+
+        }
+            if(key.equals(m015_VM.GET_TRANSFER))
+            {
+                transferRes res = (transferRes)data ;
+                if(res.response.responseCode.equals("00"))
+                {
+                    Toast.makeText(context, "Chuyển tiền thành công!", Toast.LENGTH_SHORT).show();
+                }else  Toast.makeText(context, "Vì lí do nào đó, chuyển tiền thất bại!", Toast.LENGTH_SHORT).show();
+            }
         if(key.equals(viewModel.GET_TRANSHIS) ) {
             TranhisRes res = (TranhisRes)data ;
             Log.e(m015_frg.class.getName(),"Du lieu: " + res.response.responseMessage);
@@ -249,7 +305,9 @@ public class m015_frg extends baseFRG<M015In4Binding, m015_VM> {
     }
 
     private void gotoPrice(View v) {
+
         v.startAnimation(AnimationUtils.loadAnimation(context, androidx.appcompat.R.anim.abc_fade_in));
+        viewModel.getAmount();
         setColorDefault();
         binding.btGetPrice.setColorFilter(getResources().getColor(R.color.Mint07));
         binding.lnContentHDBANK.removeAllViews();
@@ -259,7 +317,6 @@ public class m015_frg extends baseFRG<M015In4Binding, m015_VM> {
         TextView tv_myAccount =  view.findViewById(R.id.tv_MyID) ;
         Log.e(m015_frg.class.getName(),"So tai khoan la: "+ App.getInstance().getStorage().accountNo) ;
         tv_myAccount.setText(App.getInstance().getStorage().accountNo);
-
         binding.lnContentHDBANK.addView(view);
     }
 
@@ -269,11 +326,27 @@ public class m015_frg extends baseFRG<M015In4Binding, m015_VM> {
         binding.btFriendtransfer.setColorFilter(getResources().getColor(R.color.Mint07));
         binding.lnContentHDBANK.removeAllViews();
         View view = getLayoutInflater().inflate(R.layout.m015_content_4,null) ;
+        TextView tv_m04_email = view.findViewById(R.id.tv_m04_email)  ;
+        tv_m04_email.setText(responseUser.gmail);
+        TextView tv_m04_identity = view.findViewById(R.id.tv_m04_identity)  ;
+        tv_m04_identity.setText(responseUser.identity);
+        TextView tv_m04_phone = view.findViewById(R.id.tv_m04_phone)  ;
+        tv_m04_phone.setText(responseUser.phone);
+        TextView tv_m04_fName = view.findViewById(R.id.tv_m04_fName)  ;
+        tv_m04_fName.setText(responseUser.name);
+        TextView tv_m04_idTransfer = view.findViewById(R.id.tv_m04_idTransfer)  ;
+        tv_m04_idTransfer.setText(responseUser.accNo);
+        TextView tv_m04_userName = view.findViewById(R.id.tv_m04_userName)  ;
+        tv_m04_userName.setText(responseUser.username);
+        TextView tv_m04_password = view.findViewById(R.id.tv_m04_password)  ;
+        tv_m04_password.setText(responseUser.pass);
+
+
         binding.lnContentHDBANK.addView(view);
     }
 
     EditText edt_stk,edt_money,edt_Desc ;
-    private void gotoTransfer(View v) {
+    private void  gotoTransfer(View v) {
         v.startAnimation(AnimationUtils.loadAnimation(context, androidx.appcompat.R.anim.abc_fade_in));
         setColorDefault();
         binding.btTransfer.setColorFilter(getResources().getColor(R.color.Mint07));

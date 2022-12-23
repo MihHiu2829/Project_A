@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.project_a.API.Res.LoginRes;
 import com.example.project_a.API.Res.RegisterRes;
 import com.example.project_a.R;
 import com.example.project_a.Storage.App;
@@ -57,32 +58,33 @@ public class m003_frg extends baseFRG<M003ResigerBinding, m003_VM> {
 
     @Override
     public void apiSuccess(String key, Object data) {
-            if(key.equals(m003_VM.REGISTER_KEY))
-            {
+            if(key.equals(m003_VM.REGISTER_KEY)) {
 //
-                RegisterRes res = (RegisterRes)data ;
-              Log.e(m003_frg.class.getName(),"Meesge: "+ res.response.responseMessage) ;
-              Log.e(m003_frg.class.getName(),"Meesge: "+ res.response.responseCode) ;
-              Log.e(m003_frg.class.getName(),"Meesge: "+ res.response.responseId) ;
-              Log.e(m003_frg.class.getName(),"Meesge: "+ res.response.responseTime) ;
+                RegisterRes res = (RegisterRes) data;
+                Log.e(m003_frg.class.getName(), "Meesge: " + res.response.responseMessage);
+                Log.e(m003_frg.class.getName(), "Meesge: " + res.response.responseCode);
+                Log.e(m003_frg.class.getName(), "Meesge: " + res.response.responseId);
+                Log.e(m003_frg.class.getName(), "Meesge: " + res.response.responseTime);
 
 
                 final Dialog dialog = new Dialog(context);
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 dialog.setContentView(R.layout.dialog_m001);
-                Window window = dialog.getWindow() ;
-                if(window == null) return ;
+                Window window = dialog.getWindow();
+                if (window == null) return;
                 window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT);
-                WindowManager.LayoutParams windowAttributes = window.getAttributes() ;
+                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+                WindowManager.LayoutParams windowAttributes = window.getAttributes();
                 windowAttributes.gravity = Gravity.CENTER;
                 window.setAttributes(windowAttributes);
                 dialog.setCancelable(true);
                 TextView showIn4 = dialog.findViewById(R.id.tv_text);
                 showIn4.setText(App.getInstance().getStorage().notifyCase);
-                if(!res.response.responseCode.equals("00")){
-
+                if (!res.response.responseCode.equals("00")) {
                     dialog.show();
+                } else {
+                    Toast.makeText(context, "Dang ki thanh cong!", Toast.LENGTH_SHORT).show();
+                    viewModel.getAccountNO();
                 }
 
             }

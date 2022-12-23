@@ -8,11 +8,11 @@
 
     <TextView
         android:layout_width="200dp"
-        android:text="Notification"
+        android:text="Hiển thị thông báo"
         android:textStyle="bold"
         android:gravity="center"
         android:textSize="20dp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:layout_height="match_parent"/>
 
 </LinearLayout>

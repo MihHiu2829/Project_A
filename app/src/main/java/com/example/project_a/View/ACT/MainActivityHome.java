@@ -15,6 +15,7 @@ import com.example.project_a.R;
 import com.example.project_a.View.FRG.m011_frg;
 import com.example.project_a.View.FRG.m012_frg;
 import com.example.project_a.View.FRG.m013_frg;
+import com.example.project_a.View.FRG.m014_frg;
 import com.example.project_a.View.FRG.m015_frg;
 import com.example.project_a.ViewModel.CommonVm;
 import com.example.project_a.ViewModel.mainHomeVM;
@@ -46,7 +47,17 @@ public class MainActivityHome extends baseACT<ActivityMainHomeBinding, mainHomeV
     private void gotoFrgGames(View v) {
         returnOriginalColorBotton();
         binding.layoutBottomFn.btGame.setColorFilter(getResources().getColor(R.color.Mint07));
-
+        binding.lnTopBar.removeAllViews();
+        View view = getLayoutInflater().inflate(R.layout.top_bargame,null) ;
+        binding.lnTopBar.addView(view,WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.MATCH_PARENT);
+        ImageView tv_itemConnect = view.findViewById(R.id.iv_connectFen);
+        showFragment(m014_frg.class.getName(),null , false);
+        tv_itemConnect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                v.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), androidx.appcompat.R.anim.abc_fade_in));
+            }
+        });
     }
 
     private void gotoFrgAboutYou(View v) {
@@ -54,16 +65,17 @@ public class MainActivityHome extends baseACT<ActivityMainHomeBinding, mainHomeV
         binding.layoutBottomFn.btAboutyou.setColorFilter(getResources().getColor(R.color.Mint07));
         binding.lnTopBar.removeAllViews();
         View view = getLayoutInflater().inflate(R.layout.top_bar_in4,null) ;
+        binding.lnTopBar.addView(view,WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.MATCH_PARENT);
+        showFragment(m015_frg.class.getName(),null,false);
         ImageView iv_itemMenu = view.findViewById(R.id.bt_drawer) ;
         iv_itemMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 v.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(),androidx.appcompat.R.anim.abc_fade_in));
-
+                showFragment(m015_frg.class.getName(),1,false);
             }
         });
-        binding.lnTopBar.addView(view,WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.MATCH_PARENT);
-        showFragment(m015_frg.class.getName(),1,false);
+
 
 
     }

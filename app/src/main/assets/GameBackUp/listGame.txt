@@ -1,4 +1,4 @@
-Genshin Impact - Xứ sở thần tiên
+Genshin Impact
 Miễn phí
 Hành động, Nhập vai, Phiêu Lưu
 miHoYo Limited
@@ -10,7 +10,7 @@ Nhập vai
 PEARL ABYSS
 Ngày phát hành : tháng 12 năm 2014
 ','0');
-Liên Minh Huyền Thoại: Tốc Chiến
+LOL moblie
 Miễn phí
 Chiến thuật, Liên Minh, Trí Tuệ
 CÔNG TY CỔ PHẦN VNG
@@ -22,19 +22,19 @@ Hành động
 Moonton
 Ngày phát hành : 14 tháng 7, 2016
 ','0');
-Garena Liên Quân Moblie
+Garena Arena Moblie
 Miễn phí
 Chiến thuật, trí tuệ
 Garena Moblie Private
 Ngày phát hành : 13 tháng 10, 2016
 ','0');
 Dragon Raja Funtap SEA
-Có phí
+20000đ
 Hành động, Nhập vai, Phiêu lưu
 Archosaur Games
 Ngày phát hành : 18 tháng 7, 2019
 ','0');
-Clash Of Clans - Bang hội đại chiến
+Clash Of Clans
 Miễn phí
 Chiến thuật
 Supercell
@@ -59,25 +59,25 @@ VNG Game Publishing
 Ngày phát hành : 19 tháng 3, 2018
 ','0');
 Minecraft
-Có phí
+20000đ
 Sáng tạo,Sinh tồn
 Mojang
 Ngày phát hành : 18 tháng 11, 2011
 ','0');
 evertale
-Có phí
+20000đ
 Chiến thuật,Sáng tạo
 SteamDB
 Ngày phát hành : 12 tháng 2, 2021
 ','0');
 Hitman:Sniper
-Có phí
+20000đ
 Trò chơi bắn súng
 Square Enix Montreal
 Ngày phát hành : 3 tháng 10, 2014
 ','0');
 Sone Of Souls 2:Stone Parts
-Có phí
+20000đ
 Nhập vai,Sinh tồn,Phiêu lưu
 EGProject
 Ngày phát hành : 21 tháng 8, 2015
@@ -89,25 +89,25 @@ ChillyRoom
 Ngày phát hành : năm 2012
 ','0');
 Rovio Classics: AB
-Có phí
+20000đ
 Trí tuệ,Phá ải
 Rovio E-Corporation
 Ngày phát hành : không rõ
 ','0');
 Fruit Ninja Classic
-Có phí
+20000đ
 Giải trí,Phá ải
 Halfbrick Studios
 Ngày phát hành : 7 tháng 6, 2012
 ','0');
 Don't Starve: Pocket Edition
-Có phí
+20000đ
 Hành động,Sinh tồn,Vô tuyến
 Klei Entertainment Inc
 Ngày phát hành : 15 tháng 7, 2015
 ','0');
 Geometry Dash
-Có phí
+20000đ
 Phá ải,Âm nhạc,Hành động
 RobTop Games
 Ngày phát hành : tháng 8 năm 2013
